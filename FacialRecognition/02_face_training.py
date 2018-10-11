@@ -1,7 +1,7 @@
 ''''
 Training Multiple Faces stored on a DataBase:
 	==> Each face should have a unique numeric integer ID as 1, 2, 3, etc                       
-	==> LBPH computed model will be saved on trainer/ directory. (if it does not exist, pls create one)
+	==> LBPH computed model will be saved on trainer/ directory.
 	==> for using PIL, install pillow library with "pip install pillow"
 
 Based on original code by Anirban Kar: https://github.com/thecodacus/Face-Recognition    
@@ -17,6 +17,9 @@ import os
 
 # Path for face image database
 path = 'dataset'
+
+if not os.path.isdir('trainer'):
+    os.makedirs('trainer') #creates a trainer directory where the model would be stored
 
 recognizer = cv2.face.LBPHFaceRecognizer_create()
 detector = cv2.CascadeClassifier("haarcascade_frontalface_default.xml");

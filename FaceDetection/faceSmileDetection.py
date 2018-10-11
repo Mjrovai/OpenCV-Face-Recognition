@@ -40,7 +40,8 @@ while True:
         
         for (xx, yy, ww, hh) in smile:
             cv2.rectangle(roi_color, (xx, yy), (xx + ww, yy + hh), (0, 255, 0), 2)
-               
+          
+        img = cv2.flip(img, -1)
         cv2.imshow('video', img)
 
     k = cv2.waitKey(30) & 0xff
