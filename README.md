@@ -1,5 +1,7 @@
 # OpenCV-Face-Recognition
-Real-time face recognition project with OpenCV and Python
+Real-time face recognition project with OpenCV and Python,
+change the flip option as it's added according to the need,
+Great code to start
 <br><br>
 Links for complete Tutorial:
 <br>
