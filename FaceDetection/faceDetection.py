@@ -36,9 +36,9 @@ while True:
 
     cv2.imshow('video',img)
 
-    k = cv2.waitKey(30) & 0xff
-    if k == 27: # press 'ESC' to quit
+    if cv2.waitKey(10) & 0xFF == ord('k'):
         break
+   
 
 cap.release()
 cv2.destroyAllWindows()
