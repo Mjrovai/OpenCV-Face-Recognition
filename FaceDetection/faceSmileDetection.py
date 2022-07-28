@@ -1,16 +1,17 @@
 '''
-Haar Cascade Face and Smile detection with OpenCV  
+Haar Cascade Face and Smile detection with OpenCV
 
-Developed by Marcelo Rovai - MJRoBot.org @ 22Feb2018 
+Developed by Marcelo Rovai - MJRoBot.org @ 22Feb2018
 '''
 
+import os
 import numpy as np
 import cv2
 
 # multiple cascades: https://github.com/Itseez/opencv/tree/master/data/haarcascades
-faceCascade = cv2.CascadeClassifier('Cascades/haarcascade_frontalface_default.xml')
-smileCascade = cv2.CascadeClassifier('Cascades/haarcascade_smile.xml')
- 
+faceCascade = cv2.CascadeClassifier(os.path.join(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml'))
+smileCascade = cv2.CascadeClassifier(os.path.join(cv2.data.haarcascades + 'haarcascade_smile.xml'))
+
 cap = cv2.VideoCapture(0)
 cap.set(3,640) # set Width
 cap.set(4,480) # set Height
@@ -22,7 +23,7 @@ while True:
     faces = faceCascade.detectMultiScale(
         gray,
         scaleFactor=1.3,
-        minNeighbors=5,      
+        minNeighbors=5,
         minSize=(30, 30)
     )
 
@@ -30,17 +31,17 @@ while True:
         cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
         roi_gray = gray[y:y+h, x:x+w]
         roi_color = img[y:y+h, x:x+w]
-        
+
         smile = smileCascade.detectMultiScale(
             roi_gray,
             scaleFactor= 1.5,
             minNeighbors=15,
             minSize=(25, 25),
             )
-        
+
         for (xx, yy, ww, hh) in smile:
             cv2.rectangle(roi_color, (xx, yy), (xx + ww, yy + hh), (0, 255, 0), 2)
-               
+
         cv2.imshow('video', img)
 
     k = cv2.waitKey(30) & 0xff
