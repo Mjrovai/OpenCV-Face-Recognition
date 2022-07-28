@@ -1,12 +1,12 @@
 ''''
 Training Multiple Faces stored on a DataBase:
-	==> Each face should have a unique numeric integer ID as 1, 2, 3, etc                       
+	==> Each face should have a unique numeric integer ID as 1, 2, 3, etc
 	==> LBPH computed model will be saved on trainer/ directory. (if it does not exist, pls create one)
 	==> for using PIL, install pillow library with "pip install pillow"
 
-Based on original code by Anirban Kar: https://github.com/thecodacus/Face-Recognition    
+Based on original code by Anirban Kar: https://github.com/thecodacus/Face-Recognition
 
-Developed by Marcelo Rovai - MJRoBot.org @ 21Feb18   
+Developed by Marcelo Rovai - MJRoBot.org @ 21Feb18
 
 '''
 
@@ -19,12 +19,12 @@ import os
 path = 'dataset'
 
 recognizer = cv2.face.LBPHFaceRecognizer_create()
-detector = cv2.CascadeClassifier("haarcascade_frontalface_default.xml");
+detector = cv2.CascadeClassifier(os.path.join(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml'))
 
 # function to get the images and label data
 def getImagesAndLabels(path):
 
-    imagePaths = [os.path.join(path,f) for f in os.listdir(path)]     
+    imagePaths = [os.path.join(path,f) for f in os.listdir(path)]
     faceSamples=[]
     ids = []
 
