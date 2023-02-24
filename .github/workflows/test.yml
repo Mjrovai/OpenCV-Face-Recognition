@@ -1,0 +1,41 @@
+name: My Workflow
+
+on:
+  push:
+    branches:
+      - Hadia
+
+jobs:
+  my_job:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python environment
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.7'
+        architecture: 'x64'
+
+    - name: Create virtual environment
+      run: python -m venv venv
+      # This creates a virtual environment in a folder called `venv`.
+
+    - name: Activate virtual environment
+      run: |
+        . venv/bin/activate
+        pip install --upgrade pip
+    - name: Install requirements
+      run: |
+        pip install -r requirements.txt
+        pip freeze > requirements.txt
+        
+    - name: Linter test
+      run: |
+        pylint --disable=all $(git ls-files '*.py')
+        
+    - name: black test
+      run: |
+        black .
+
