@@ -1,0 +1,5 @@
+numpy 
+pandas
+pillow
+pylint
+cv2
