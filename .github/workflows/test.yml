@@ -3,7 +3,7 @@ name: My Workflow
 on:
   push:
     branches:
-      - hadia
+      - Hadia
 
 jobs:
   my_job:
@@ -15,7 +15,7 @@ jobs:
     - name: Set up Python environment
       uses: actions/setup-python@v2
       with:
-        python-version: '3.7'
+        python-version: '3.9'
         architecture: 'x64'
 
     - name: Create virtual environment
@@ -31,13 +31,15 @@ jobs:
         pip install -r requirements.txt
         pip freeze > requirements.txt
         
-    - name: Create pylintrc file
-      run: |
-        pylint --generate-rcfile > .pylintrc
+    
         
     - name: Linter test
       run: |
         pylint --disable=all $(git ls-files '*.py')
+        
+    - name: black test
+      run: |
+        black .   
 
 
 
