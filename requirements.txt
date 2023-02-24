@@ -2,5 +2,5 @@ numpy
 pandas
 pillow
 pylint
-cv2
+opencv-python
 black
