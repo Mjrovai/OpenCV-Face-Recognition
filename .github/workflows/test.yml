@@ -31,8 +31,6 @@ jobs:
         pip install -r requirements.txt
         pip freeze > requirements.txt
         
-    
-        
     - name: Linter test
       run: |
         pylint --disable=all $(git ls-files '*.py')
