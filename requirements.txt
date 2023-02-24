@@ -3,3 +3,4 @@ pandas
 pillow
 pylint
 cv2
+black
