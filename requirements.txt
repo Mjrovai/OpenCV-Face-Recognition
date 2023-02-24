@@ -1,4 +1,5 @@
 numpy 
+pandas
 pillow
 pylint
 opencv-python
