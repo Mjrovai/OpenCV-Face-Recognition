@@ -19,7 +19,7 @@ cap.set(4,480) # set Height
 
 while True:
     ret, img = cap.read()
-    img = cv2.flip(img, -1)
+    img = cv2.flip(img, 1)
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     faces = faceCascade.detectMultiScale(
         gray,
